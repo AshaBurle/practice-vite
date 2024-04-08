@@ -14,7 +14,7 @@ const Home =()=>{
     return(
         <div>
         
-        <div className="w-full" style={{backgroundColor:"black"}}>
+        <div >
        
         <h1>Home Page</h1>
         <button type="button" className={Tab=== 1? "bg_color" : "" }onClick={()=>setTab(1)}>Go to Login</button>
