@@ -6,7 +6,7 @@ const Home =()=>{
     const [Tab,setTab] = useState(1)
     
     useEffect(()=>{
-    setTab(2)
+    setTab(2) // to set default tab to display 
     
 },[])
 

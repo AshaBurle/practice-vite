@@ -9,7 +9,10 @@ const Registrtion =()=>{
             age:"23",
             email:"ashaburle06@gmail.com"
 
-        }
+        },
+        userList:[
+
+        ]
         
     })
 
@@ -23,8 +26,36 @@ const Registrtion =()=>{
 
 
     }
+const handleSubmit=()=>{
+    let {userList,userDetails} = state
+    let tempObject= JSON.parse(JSON.stringify(userDetails))
+userList.push(tempObject)
+setState({userList})
+}
 
-    return(
+    
+  let TableJsx;
+TableJsx =  state.userList.map((Item,index)=>{
+    return <tr key={index}>
+        <td >{index+1}</td>
+    <td >{Item.firstName}</td>
+    <td >{Item.lastName}</td>
+    <td >{Item.age}</td>
+    <td >{Item.email}</td>
+  </tr>    
+
+   
+    
+
+})
+
+
+
+
+
+
+
+  return(
         <div>
             <div>
             <h1>Registration Form</h1>
@@ -36,13 +67,14 @@ const Registrtion =()=>{
             <label id="age">age</label>
             <input type="text" placeholder="enter email" id ="email" onChange={(e)=>HandleChange(e,"email")} />
             <label id="email">Email</label>
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={handleSubmit}>Submit</button>
             </div>
             <div>
             <table>
   <caption>Statement Summary</caption>
   <thead>
     <tr>
+    <th scope="col">S.No</th>
       <th scope="col">FirstName</th>
       <th scope="col">LastName</th>
       <th scope="col">Age</th>
@@ -50,30 +82,8 @@ const Registrtion =()=>{
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td data-label="Account">Visa - 3412</td>
-      <td data-label="Due Date">04/01/2016</td>
-      <td data-label="Amount">$1,190</td>
-      <td data-label="Period">03/01/2016 - 03/31/2016</td>
-    </tr>
-    <tr>
-      <td scope="row" data-label="Account">Visa - 6076</td>
-      <td data-label="Due Date">03/01/2016</td>
-      <td data-label="Amount">$2,443</td>
-      <td data-label="Period">02/01/2016 - 02/29/2016</td>
-    </tr>
-    <tr>
-      <td scope="row" data-label="Account">Corporate AMEX</td>
-      <td data-label="Due Date">03/01/2016</td>
-      <td data-label="Amount">$1,181</td>
-      <td data-label="Period">02/01/2016 - 02/29/2016</td>
-    </tr>
-    <tr>
-      <td scope="row" data-label="Acount">Visa - 3412</td>
-      <td data-label="Due Date">02/01/2016</td>
-      <td data-label="Amount">$842</td>
-      <td data-label="Period">01/01/2016 - 01/31/2016</td>
-    </tr>
+   {TableJsx}
+    
   </tbody>
 </table>
             </div>
